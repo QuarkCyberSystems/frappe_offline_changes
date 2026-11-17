@@ -12,6 +12,27 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  commit-lint:
+    name: 'Semantic Commits'
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 200
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          check-latest: true
+      - name: Check commit titles
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          npm install --no-save @commitlint/cli @commitlint/config-conventional
+          npx commitlint --verbose --from "${BASE_SHA}" --to "${HEAD_SHA}"
+
   linter:
     name: 'Frappe Linter'
     runs-on: ubuntu-latest
