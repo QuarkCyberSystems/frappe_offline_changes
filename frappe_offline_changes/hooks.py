@@ -4,6 +4,16 @@ app_publisher = "Quark Cyber Systems"
 app_description = "Receives changes captured offline, applies them and holds conflicts for review"
 app_email = "vivek@quarkcs.com"
 
+add_to_apps_screen = [
+	{
+		"name": "frappe_offline_changes",
+		"logo": "/assets/frappe_offline_changes/icons/desktop_icons/solid/offline_changes.svg",
+		"title": "Offline Changes",
+		"route": "/desk/offline-changes",
+		"has_permission": "frappe_offline_changes.offline_changes.doctype.offline_change.offline_change.has_app_permission",
+	}
+]
+
 export_python_type_annotations = True
 
 after_install = "frappe_offline_changes.install.after_install"

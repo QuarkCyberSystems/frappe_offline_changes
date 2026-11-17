@@ -1,0 +1,21 @@
+{
+ "app": "frappe_offline_changes",
+ "bg_color": "gray",
+ "creation": "2026-11-17 11:49:16.291895",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon_type": "App",
+ "idx": 0,
+ "label": "Offline Changes",
+ "link": "/desk/offline-changes",
+ "link_type": "External",
+ "logo_url": "/assets/frappe_offline_changes/icons/desktop_icons/solid/offline_changes.svg",
+ "modified": "2026-11-17 11:49:16.291895",
+ "modified_by": "Administrator",
+ "name": "Offline Changes",
+ "owner": "Administrator",
+ "restrict_removal": 0,
+ "roles": [],
+ "standard": 1
+}

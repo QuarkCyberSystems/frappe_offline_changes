@@ -1,0 +1,29 @@
+{
+ "app": "frappe_offline_changes",
+ "bg_color": "gray",
+ "creation": "2026-11-17 11:49:16.295188",
+ "docstatus": 0,
+ "doctype": "Desktop Icon",
+ "hidden": 0,
+ "icon": "refresh-cw",
+ "icon_type": "Link",
+ "idx": 0,
+ "label": "Offline Change Queue",
+ "link_to": "Offline Changes",
+ "link_type": "Workspace Sidebar",
+ "modified": "2026-11-17 11:49:16.295188",
+ "modified_by": "Administrator",
+ "name": "Offline Change Queue",
+ "owner": "Administrator",
+ "parent_icon": "Offline Changes",
+ "restrict_removal": 0,
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Offline Change Reviewer"
+  }
+ ],
+ "standard": 1
+}
