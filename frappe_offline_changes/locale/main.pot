@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Offline Changes VERSION\n"
 "Report-Msgid-Bugs-To: vivek@quarkcs.com\n"
-"POT-Creation-Date: 2026-11-17 09:57+0000\n"
-"PO-Revision-Date: 2026-11-17 09:57+0000\n"
+"POT-Creation-Date: 2026-11-17 10:42+0000\n"
+"PO-Revision-Date: 2026-11-17 10:42+0000\n"
 "Last-Translator: vivek@quarkcs.com\n"
 "Language-Team: vivek@quarkcs.com\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 
-#: frappe_offline_changes/api/changes.py:34
+#: frappe_offline_changes/api/changes.py:36
 msgid "A batch holds at most {0} changes"
 msgstr ""
 
@@ -28,16 +28,16 @@ msgstr ""
 msgid "A change received from a device is kept as a record and cannot be deleted"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:250
+#: frappe_offline_changes/offline_changes/processing.py:252
 msgid "A field was changed on the server after the device read it"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:166
+#: frappe_offline_changes/offline_changes/processing.py:168
 msgid "A record named {0} already exists"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:169
-#: frappe_offline_changes/offline_changes/processing.py:265
+#: frappe_offline_changes/offline_changes/processing.py:171
+#: frappe_offline_changes/offline_changes/processing.py:267
 msgid "A record this one refers to has not been created yet"
 msgstr ""
 
@@ -83,11 +83,11 @@ msgstr ""
 msgid "Change ID"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:47
+#: frappe_offline_changes/api/changes.py:49
 msgid "Change {0} was sent by another user"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:127
+#: frappe_offline_changes/api/changes.py:134
 msgid "Change {0}: {1}"
 msgstr ""
 
@@ -241,6 +241,12 @@ msgstr ""
 msgid "Last to arrive wins"
 msgstr ""
 
+#. Description of the 'Reviewers See Changes Without a Scope' (Check) field in
+#. DocType 'Offline Change Settings'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "Left off, a change whose record belongs to no business unit is seen by System Managers only"
+msgstr ""
+
 #. Label of the section_break_limits (Section Break) field in DocType 'Offline
 #. Change Settings'
 #: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
@@ -297,6 +303,11 @@ msgstr ""
 msgid "Offline Change Settings"
 msgstr ""
 
+#. Name of a DocType
+#: frappe_offline_changes/offline_changes/doctype/offline_review_scope/offline_review_scope.json
+msgid "Offline Review Scope"
+msgstr ""
+
 #: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:137
 msgid "Only a change that was applied over another value is closed"
 msgstr ""
@@ -336,7 +347,7 @@ msgstr ""
 msgid "Other Value"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:257
+#: frappe_offline_changes/offline_changes/processing.py:259
 msgid "Other fields of the record were changed on the server after the device read it"
 msgstr ""
 
@@ -412,6 +423,12 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
+#. Label of the replaced_by_field (Data) field in DocType 'Offline Change
+#. DocType'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_doctype/offline_change_doctype.json
+msgid "Replaced-By Field"
+msgstr ""
+
 #. Label of the resolution (Select) field in DocType 'Offline Change Field'
 #: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
 msgid "Resolution"
@@ -436,21 +453,36 @@ msgstr ""
 msgid "Resolved On"
 msgstr ""
 
+#. Label of the user (Link) field in DocType 'Offline Review Scope'
+#: frappe_offline_changes/offline_changes/doctype/offline_review_scope/offline_review_scope.json
+msgid "Reviewer"
+msgstr ""
+
+#. Label of the reviewers_see_unscoped (Check) field in DocType 'Offline Change
+#. Settings'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "Reviewers See Changes Without a Scope"
+msgstr ""
+
 #. Label of the row_name (Data) field in DocType 'Offline Change Field'
 #: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
 msgid "Row"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:323
+#: frappe_offline_changes/offline_changes/processing.py:325
 msgid "Row {0} no longer exists. Keep the server's value for its fields."
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.py:36
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.py:37
 msgid "Row {0}: {1} cannot be changed offline. Choose a DocType with records of its own"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.py:41
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.py:42
 msgid "Row {0}: {1} is listed twice"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.py:56
+msgid "Row {0}: {1} is not a link field of {2} that can be the {3}"
 msgstr ""
 
 #. Label of the section_break_payload (Section Break) field in DocType 'Offline
@@ -484,14 +516,24 @@ msgid "Same field changed"
 msgstr ""
 
 #. Label of the scope_name (Dynamic Link) field in DocType 'Offline Change'
+#. Label of the scope_name (Dynamic Link) field in DocType 'Offline Review
+#. Scope'
 #: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_review_scope/offline_review_scope.json
 msgid "Scope"
+msgstr ""
+
+#. Label of the scope_field (Data) field in DocType 'Offline Change DocType'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_doctype/offline_change_doctype.json
+msgid "Scope Field"
 msgstr ""
 
 #. Label of the scope_doctype (Link) field in DocType 'Conflict Rule'
 #. Label of the scope_doctype (Link) field in DocType 'Offline Change'
+#. Label of the scope_doctype (Link) field in DocType 'Offline Review Scope'
 #: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
 #: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_review_scope/offline_review_scope.json
 msgid "Scope Type"
 msgstr ""
 
@@ -538,6 +580,7 @@ msgstr ""
 #: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
 #: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
 #: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+#: frappe_offline_changes/offline_changes/doctype/offline_review_scope/offline_review_scope.json
 msgid "System Manager"
 msgstr ""
 
@@ -546,7 +589,7 @@ msgstr ""
 msgid "Table"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:418
+#: frappe_offline_changes/offline_changes/processing.py:423
 msgid "The change does not say which version of the record the device read"
 msgstr ""
 
@@ -559,35 +602,47 @@ msgstr ""
 msgid "The fields of a change cannot be added or removed"
 msgstr ""
 
+#. Description of the 'Scope Field' (Data) field in DocType 'Offline Change
+#. DocType'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_doctype/offline_change_doctype.json
+msgid "The link field that names the business unit a record belongs to"
+msgstr ""
+
+#. Description of the 'Replaced-By Field' (Data) field in DocType 'Offline
+#. Change DocType'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_doctype/offline_change_doctype.json
+msgid "The link field that names the record that took this one's place, a duplicate merged into another for example"
+msgstr ""
+
 #: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:115
 msgid "The record changed again on the server. Choose a value for each field in conflict, then resolve."
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:218
+#: frappe_offline_changes/offline_changes/processing.py:220
 msgid "The record no longer exists. Reject the change."
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:151
+#: frappe_offline_changes/offline_changes/processing.py:153
 msgid "The record this change is for has not been created yet"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:191
+#: frappe_offline_changes/offline_changes/processing.py:193
 msgid "The record was already deleted"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:196
+#: frappe_offline_changes/offline_changes/processing.py:198
 msgid "The record was changed on the server after the device read it"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:228
+#: frappe_offline_changes/offline_changes/processing.py:230
 msgid "The record was deleted on the server"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:226
+#: frappe_offline_changes/offline_changes/processing.py:228
 msgid "The record was deleted on the server, and the rule lets the deletion stand"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:212
+#: frappe_offline_changes/offline_changes/processing.py:214
 msgid "The record was replaced by {0} on the server"
 msgstr ""
 
@@ -603,7 +658,7 @@ msgstr ""
 msgid "This change was applied over another value, kept below. Close it once you have seen it."
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:31
+#: frappe_offline_changes/api/changes.py:33
 msgid "This site does not receive changes captured offline"
 msgstr ""
 
@@ -656,51 +711,55 @@ msgstr ""
 msgid "Waits For"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:291
+#: frappe_offline_changes/offline_changes/processing.py:293
 msgid "You may not change the field {0}"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:232
+#: frappe_offline_changes/offline_changes/processing.py:234
 msgid "You may not change this record"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:91
+#: frappe_offline_changes/offline_changes/processing.py:93
 msgid "You may not make this change"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:148
+#: frappe_offline_changes/api/changes.py:155
 msgid "it changes nothing"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:137
+#: frappe_offline_changes/api/changes.py:144
 msgid "it does not name the record"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:130
+#: frappe_offline_changes/api/changes.py:137
 msgid "it has no change id"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:146
+#: frappe_offline_changes/api/changes.py:153
 msgid "it has no values for the record to create"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:134
+#: frappe_offline_changes/api/changes.py:141
 msgid "it names no DocType of this site"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:132
+#: frappe_offline_changes/api/changes.py:139
 msgid "its operation is not Create, Update or Delete"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:144
+#: frappe_offline_changes/api/changes.py:151
 msgid "its {0} are not given by name"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:141
+#: frappe_offline_changes/api/changes.py:148
 msgid "the version of the record the device read is not a date and time"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:289
+#: frappe_offline_changes/offline_changes/doctype/offline_review_scope/offline_review_scope.py:38
+msgid "{0} already reviews {1}"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:291
 msgid "{0} has no field {1} that can be changed"
 msgstr ""
 
@@ -708,7 +767,7 @@ msgstr ""
 msgid "{0} has no field {1}, in the record or in its tables"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/processing.py:407
+#: frappe_offline_changes/offline_changes/processing.py:412
 msgid "{0} has no table {1}"
 msgstr ""
 
@@ -716,7 +775,7 @@ msgstr ""
 msgid "{0} is not an outcome of the situation {1}. Choose one of: {2}"
 msgstr ""
 
-#: frappe_offline_changes/api/changes.py:74
+#: frappe_offline_changes/api/changes.py:81
 msgid "{0} may not be sent from a device: {1}"
 msgstr ""
 

@@ -63,6 +63,14 @@ class TestOfflineChanges(IntegrationTestCase):
 	def todo(self, **values):
 		return frappe.get_doc({"doctype": "ToDo", "description": "Visit the family", **values}).insert()
 
+	def user(self, email, role=None):
+		user = frappe.get_doc(
+			{"doctype": "User", "email": email, "first_name": email.split("@")[0], "send_welcome_email": 0}
+		)
+		if role:
+			user.append("roles", {"role": role})
+		return user.insert()
+
 	def update(self, doc, **fields):
 		"""A change made on a device that read `doc`: each field as (the value read, the new value)."""
 		return {
@@ -416,14 +424,7 @@ class TestOfflineChanges(IntegrationTestCase):
 
 	def test_a_change_the_user_may_not_make_is_refused_and_kept(self):
 		todo = self.todo()
-		user = frappe.get_doc(
-			{
-				"doctype": "User",
-				"email": "field.officer@example.org",
-				"first_name": "Field",
-				"send_welcome_email": 0,
-			}
-		).insert()
+		user = self.user("field.officer@example.org")
 		device = self.update(todo, priority=("Medium", "High"))
 		frappe.set_user(user.name)
 		(change,) = self.send(device)
@@ -521,16 +522,7 @@ class TestOfflineChanges(IntegrationTestCase):
 			self.assertEqual((in_guest.status, in_guest.scope_name), ("Held", "Guest"))
 			self.assertEqual((in_desk.status, in_desk.scope_name), ("Applied", "Desk User"))
 
-			reviewer = frappe.get_doc(
-				{
-					"doctype": "User",
-					"email": "reviewer@example.org",
-					"first_name": "Reviewer",
-					"send_welcome_email": 0,
-				}
-			)
-			reviewer.append("roles", {"role": "Offline Change Reviewer"})
-			reviewer.insert()
+			reviewer = self.user("reviewer.one@example.org", "Offline Change Reviewer")
 			REVIEWS.append(("Role", "Guest"))
 			self.assertTrue(frappe.has_permission("Offline Change", "write", in_guest, user=reviewer.name))
 			self.assertFalse(frappe.has_permission("Offline Change", "read", in_desk, user=reviewer.name))
@@ -540,6 +532,131 @@ class TestOfflineChanges(IntegrationTestCase):
 			)
 			self.assertEqual(listed, [in_guest.name])
 			self.assertEqual(query_conditions("Administrator"), "")
+
+	def open_to_devices(self, **named):
+		"""Settings as an administrator would write them: ToDo with its fields named, and Language."""
+		settings = frappe.get_single("Offline Change Settings")
+		settings.set(
+			"doctypes",
+			[
+				{
+					"reference_doctype": "ToDo",
+					"allow_create": 1,
+					"allow_update": 1,
+					"allow_delete": 1,
+					"scope_field": "role",
+				},
+				{"reference_doctype": "Language", "allow_update": 1, **named},
+			],
+		)
+		settings.save()
+		return settings
+
+	def test_the_settings_name_the_scope_of_a_record(self):
+		self.open_to_devices()
+		self.rule("Same field changed", "Hold for review", scope_doctype="Role", scope_name="Guest")
+		held, applied = self.todo(role="Guest"), self.todo()
+		devices = [self.update(todo, priority=("Medium", "High")) for todo in (held, applied)]
+		for todo in (held, applied):
+			frappe.get_doc("ToDo", todo.name).update({"priority": "Low"}).save()
+		in_guest, without = self.send(*devices)
+		self.assertEqual(
+			(in_guest.status, in_guest.scope_doctype, in_guest.scope_name), ("Held", "Role", "Guest")
+		)
+		self.assertEqual((without.status, without.scope_name), ("Applied", None))
+
+		created = {
+			"change_id": "scoped-1",
+			"operation": "Create",
+			"doctype": "ToDo",
+			"values": {"description": "New", "role": "Guest"},
+		}
+		self.assertEqual(self.send(created)[0].scope_name, "Guest")
+
+	def test_a_deleted_record_keeps_its_scope(self):
+		self.open_to_devices()
+		todo = self.todo(role="Guest")
+		device = self.update(todo, priority=("Medium", "High"))
+		frappe.delete_doc("ToDo", todo.name)
+		(change,) = self.send(device)
+		# Read from what Frappe kept of the deleted record, not from the device
+		self.assertEqual((change.status, change.scope_name), ("Held", "Guest"))
+
+		# Where nothing is left of the record, the device's belief is taken, for a scope that exists
+		frappe.db.delete("Deleted Document", {"deleted_name": todo.name})
+		for change_id, believed, found in (("gone-1", "Guest", "Guest"), ("gone-2", "No Such Role", None)):
+			(change,) = self.send({**device, "change_id": change_id, "scope": believed})
+			self.assertEqual(change.scope_name, found)
+		# A record that exists is never placed by what the device says
+		(change,) = self.send(
+			{**self.update(self.todo(role="Guest"), priority=("Medium", "High")), "scope": "Desk User"}
+		)
+		self.assertEqual(change.scope_name, "Guest")
+
+	def test_the_settings_name_the_field_of_the_replacement(self):
+		self.open_to_devices(replaced_by_field="based_on")
+		for code, based_on in (("zzc", None), ("zzb", "zzc"), ("zza", "zzb")):
+			frappe.get_doc(
+				{"doctype": "Language", "language_code": code, "language_name": code, "based_on": based_on}
+			).insert()
+		merged = frappe.get_doc("Language", "zza")
+		(change,) = self.send(self.update(merged, flag=(None, "zz")))
+		# zza was replaced by zzb, itself replaced by zzc: the change lands on the record that remains
+		self.assertEqual(
+			(change.status, change.situation, change.applied_to),
+			("Applied", "Record replaced on server", "zzc"),
+			change.message,
+		)
+		self.assertEqual(frappe.db.get_value("Language", "zzc", "flag"), "zz")
+		self.assertIsNone(frappe.db.get_value("Language", "zza", "flag"))
+
+	def test_the_fields_named_in_the_settings_are_checked(self):
+		settings = self.open_to_devices()
+		for named in (
+			{"scope_field": "no_such_field"},
+			{"scope_field": "description"},
+			{"replaced_by_field": "role"},
+		):
+			settings.doctypes[0].update({"scope_field": "role", "replaced_by_field": None, **named})
+			self.assertRaises(frappe.ValidationError, settings.save)
+
+	def test_a_reviewer_sees_the_scopes_listed_for_them(self):
+		self.open_to_devices()
+		todos = [self.todo(role="Guest"), self.todo(role="Desk User"), self.todo()]
+		in_guest, in_desk, without = self.send(
+			*[self.update(todo, priority=("Medium", "High")) for todo in todos]
+		)
+		reviewer = self.user("reviewer.two@example.org", "Offline Change Reviewer")
+
+		def seen():
+			frappe.set_user(reviewer.name)
+			names = frappe.get_list(
+				"Offline Change",
+				filters={"name": ("in", [in_guest.name, in_desk.name, without.name])},
+				pluck="name",
+			)
+			allowed = {
+				change.name
+				for change in (in_guest, in_desk, without)
+				if frappe.has_permission("Offline Change", "write", change)
+			}
+			frappe.set_user("Administrator")
+			self.assertEqual(set(names), allowed)
+			return allowed
+
+		# Listed for no scope, a reviewer sees nothing: not even a change that has no scope
+		self.assertEqual(seen(), set())
+		listed = {
+			"doctype": "Offline Review Scope",
+			"user": reviewer.name,
+			"scope_doctype": "Role",
+			"scope_name": "Guest",
+		}
+		frappe.get_doc(listed).insert()
+		self.assertRaises(frappe.ValidationError, frappe.get_doc(listed).insert)
+		self.assertEqual(seen(), {in_guest.name})
+		frappe.db.set_single_value("Offline Change Settings", "reviewers_see_unscoped", 1)
+		self.assertEqual(seen(), {in_guest.name, without.name})
 
 	def test_applied_values_are_removed_after_the_period(self):
 		todo = self.todo()

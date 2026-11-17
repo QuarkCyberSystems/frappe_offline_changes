@@ -10,7 +10,9 @@
   "reference_doctype",
   "allow_create",
   "allow_update",
-  "allow_delete"
+  "allow_delete",
+  "scope_field",
+  "replaced_by_field"
  ],
  "fields": [
   {
@@ -41,13 +43,27 @@
    "fieldtype": "Check",
    "in_list_view": 1,
    "label": "Delete"
+  },
+  {
+   "description": "The link field that names the business unit a record belongs to",
+   "fieldname": "scope_field",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Scope Field"
+  },
+  {
+   "description": "The link field that names the record that took this one's place, a duplicate merged into another for example",
+   "fieldname": "replaced_by_field",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Replaced-By Field"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-11-17 10:43:19.458631",
+ "modified": "2026-11-17 11:39:50.157907",
  "modified_by": "Administrator",
  "module": "Offline Changes",
  "name": "Offline Change DocType",

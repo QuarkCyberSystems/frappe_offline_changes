@@ -8,6 +8,7 @@
  "field_order": [
   "enabled",
   "doctypes",
+  "reviewers_see_unscoped",
   "section_break_limits",
   "max_batch_size",
   "column_break_limits",
@@ -49,13 +50,20 @@
    "fieldtype": "Int",
    "label": "Days Applied Values Are Kept",
    "non_negative": 1
+  },
+  {
+   "default": "0",
+   "description": "Left off, a change whose record belongs to no business unit is seen by System Managers only",
+   "fieldname": "reviewers_see_unscoped",
+   "fieldtype": "Check",
+   "label": "Reviewers See Changes Without a Scope"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-11-17 10:43:29.378277",
+ "modified": "2026-11-17 11:39:50.942079",
  "modified_by": "Administrator",
  "module": "Offline Changes",
  "name": "Offline Change Settings",

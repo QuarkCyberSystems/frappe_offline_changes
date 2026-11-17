@@ -9,6 +9,7 @@ from frappe import _
 from frappe.utils import get_datetime, now_datetime
 
 from frappe_offline_changes.offline_changes.processing import field_rows
+from frappe_offline_changes.utils.extensions import scope_of
 
 OPERATIONS = ("Create", "Update", "Delete")
 
@@ -18,7 +19,8 @@ def submit(changes: list | str, device_id: str, batch_id: str | None = None) -> 
 	"""Record a batch of changes, in the order captured, and queue it to be applied.
 
 	Each change: `change_id` (generated on the device, so a batch sent twice is applied once), `operation`
-	(Create, Update, Delete), `doctype`, `name`, `captured_on`, `base_modified` (the record's `modified` when
+	(Create, Update, Delete), `doctype`, `name`, `captured_on`, `scope` (the business unit the device believes
+	the record belongs to, used only if the record is gone), `base_modified` (the record's `modified` when
 	the device read it; empty for a record the device created and has not sent yet) and the payload described in
 	frappe_offline_changes.offline_changes.processing.
 
@@ -47,6 +49,9 @@ def submit(changes: list | str, device_id: str, batch_id: str | None = None) -> 
 			continue
 
 		payload = {key: change[key] for key in ("values", "fields", "rows") if change.get(key)}
+		# Found now, while the sender is known and the record most likely still exists, so that a change refused
+		# below, or one whose record is deleted before the job runs, still reaches the right reviewers
+		scope = scope_of(change.doctype, change.get("name"), change.get("values"), hint=change.get("scope"))
 		doc = frappe.get_doc(
 			{
 				"doctype": "Offline Change",
@@ -61,6 +66,8 @@ def submit(changes: list | str, device_id: str, batch_id: str | None = None) -> 
 				"base_modified": change.get("base_modified"),
 				"captured_on": change.get("captured_on"),
 				"received_on": now_datetime(),
+				"scope_doctype": scope and scope[0],
+				"scope_name": scope and scope[1],
 				"payload": frappe.as_json(payload, indent=None),
 				"field_changes": field_rows(change.doctype, payload) if change.operation == "Update" else [],
 			}

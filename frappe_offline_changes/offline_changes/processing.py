@@ -395,7 +395,10 @@ def _point_links(meta, values) -> str | None:
 
 
 def _set_scope(change, name, values=None) -> tuple[str, str] | None:
-	scope = scope_of(change.reference_doctype, name, values)
+	# A record that is gone tells nothing more: the scope found when the change was received is kept
+	scope = scope_of(change.reference_doctype, name, values) or (
+		(change.scope_doctype, change.scope_name) if change.scope_name else None
+	)
 	change.scope_doctype, change.scope_name = scope or (None, None)
 	return scope
 

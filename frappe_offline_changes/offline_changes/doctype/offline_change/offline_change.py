@@ -148,16 +148,21 @@ class OfflineChange(Document):
 
 
 def has_permission(doc, ptype=None, user=None) -> bool:
-	"""A reviewer handles the changes of their scopes, and those of records that have none."""
-	scopes = _scopes(user or frappe.session.user)
-	return scopes is None or not doc.scope_name or (doc.scope_doctype, doc.scope_name) in scopes
+	"""A reviewer handles the changes of their scopes. One without a scope is theirs only where the site says so."""
+	user = user or frappe.session.user
+	if _sees_all(user):
+		return True
+	if not doc.scope_name:
+		return _unscoped_shown()
+	return (doc.scope_doctype, doc.scope_name) in reviewer_scopes(user)
 
 
 def query_conditions(user: str | None = None, doctype: str | None = None) -> str:
-	scopes = _scopes(user or frappe.session.user)
-	if scopes is None:
+	user = user or frappe.session.user
+	if _sees_all(user):
 		return ""
-	unscoped = "ifnull(`tabOffline Change`.scope_name, '') = ''"
+	scopes = reviewer_scopes(user)
+	unscoped = "ifnull(`tabOffline Change`.scope_name, '') = ''" if _unscoped_shown() else "1 = 0"
 	if not scopes:
 		return unscoped
 	pairs = ", ".join(
@@ -168,11 +173,17 @@ def query_conditions(user: str | None = None, doctype: str | None = None) -> str
 	return f"({unscoped} or (`tabOffline Change`.scope_doctype, `tabOffline Change`.scope_name) in ({pairs}))"
 
 
-def _scopes(user: str) -> list[tuple[str, str]] | None:
-	"""The scopes a user reviews; None for no limit."""
-	if user == "Administrator" or "System Manager" in frappe.get_roles(user):
-		return None
-	return reviewer_scopes(user)
+def has_app_permission() -> bool:
+	"""The app is shown to those who review changes or configure it."""
+	return bool({"System Manager", "Offline Change Reviewer"} & set(frappe.get_roles()))
+
+
+def _sees_all(user: str) -> bool:
+	return user == "Administrator" or "System Manager" in frappe.get_roles(user)
+
+
+def _unscoped_shown() -> bool:
+	return bool(frappe.db.get_single_value("Offline Change Settings", "reviewers_see_unscoped"))
 
 
 def remove_old_values():

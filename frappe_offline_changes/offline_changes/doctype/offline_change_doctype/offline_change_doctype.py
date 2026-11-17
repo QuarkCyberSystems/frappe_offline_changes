@@ -17,6 +17,8 @@ class OfflineChangeDocType(Document):
 		parentfield: DF.Data
 		parenttype: DF.Data
 		reference_doctype: DF.Link
+		replaced_by_field: DF.Data | None
+		scope_field: DF.Data | None
 	# end: auto-generated types
 
 	pass

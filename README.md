@@ -47,13 +47,18 @@ bench --site $SITE install-app frappe_offline_changes
 **Offline Change Settings** (System Manager):
 
 - *Receive Changes Captured Offline* switches the app on. It is off after installation.
-- *DocTypes That May Be Changed Offline* lists each DocType, and whether a device may create, update or delete its records. A change for any other DocType is refused and kept.
+- *DocTypes That May Be Changed Offline* lists each DocType, and whether a device may create, update or delete its records. A change for any other DocType is refused and kept. Two optional fields per DocType tell the app about its records without any code:
+  - *Scope Field*: the link field that names the business unit a record belongs to. The scope narrows a rule and decides which reviewers see a change.
+  - *Replaced-By Field*: the link field that names the record that took this one's place, a duplicate merged into another for example. A change to the replaced record follows it.
+- *Reviewers See Changes Without a Scope*: left off, a change whose record belongs to no business unit is seen by System Managers only.
 - *Changes per Batch* limits one call.
 - *Days Applied Values Are Kept*: after this, the values of a change that was applied are removed from the queue. The record's own history keeps them.
 
 **Conflict Rule** (System Manager): one rule per situation is created at installation. A rule may be narrowed to a DocType, to one of its fields, and to a scope. The narrowest rule that fits decides: a rule for the record's scope first, then a rule for the field, then for the DocType.
 
 **Offline Change Reviewer** is the role of the people who resolve, reject and close changes in the **Offline Change** list.
+
+**Offline Review Scope** (System Manager) lists which reviewer handles which scope. A reviewer sees the changes of the scopes listed for them and no other. System Managers see every change.
 
 ## For the device
 
@@ -87,6 +92,7 @@ Both calls are made by the signed-in user.
 
 - `change_id` is generated on the device. A batch sent twice is applied once.
 - `base_modified` is the record's `modified` when the device read it. Leave it empty for a record the device created and has not sent yet.
+- `scope`, optional, is the business unit the device believes the record belongs to. The server reads the scope from the record and uses this only when nothing is left of the record.
 - A creation sends `values` in place of `fields`. Where the DocType is named by UUID the device's name is kept; elsewhere the server names the record, and later changes sent under the device's name find it.
 - The call returns at once with the batch id. The changes are applied in a background job, in the order sent.
 
@@ -94,7 +100,7 @@ Both calls are made by the signed-in user.
 
 ## For the app that owns a DocType
 
-This app knows no DocType but its own. Another app tells it about its records through hooks, described in [`utils/extensions.py`](frappe_offline_changes/utils/extensions.py):
+This app knows no DocType but its own. Where the scope and the replacement are fields of the record, the settings above are enough and the owning app changes nothing. Where they are not, or where the app already knows who reviews what, it answers through hooks, described in [`utils/extensions.py`](frappe_offline_changes/utils/extensions.py). A hook is asked before the settings:
 
 | Hook | Question |
 |---|---|
@@ -102,9 +108,9 @@ This app knows no DocType but its own. Another app tells it about its records th
 | `replaced_by` | Has this record been replaced by another, a duplicate merged for example |
 | `apply` | How is a change saved, where the document API is not the right entry point |
 | `after_create` | What follows a creation |
-| `offline_change_reviewer_scopes` | Which scopes does this reviewer handle |
+| `offline_change_reviewer_scopes` | Which scopes does this reviewer handle, in place of the Offline Review Scope list |
 
-A DocType with no hook has no scope, is never replaced, and is saved through the document API with Frappe's permissions.
+A DocType with neither hook nor setting has no scope, is never replaced, and is saved through the document API with Frappe's permissions.
 
 ## Development
 
@@ -122,4 +128,4 @@ Every user-facing string is translatable. Generate the template with `bench gene
 
 ## Security
 
-A queue row holds values of the record it concerns. It is visible to System Managers and to the reviewers of the record's scope, never to the user who sent it, who asks for the outcome through the `status` call. Report a vulnerability privately: see [SECURITY.md](SECURITY.md).
+A queue row holds values of the record it concerns. It is visible to System Managers and to the reviewers of the record's scope, never to the user who sent it, who asks for the outcome through the `status` call. The scope is read on the server, from the record or from what Frappe kept of a deleted one, so a device cannot route a change to other reviewers. Report a vulnerability privately: see [SECURITY.md](SECURITY.md).
