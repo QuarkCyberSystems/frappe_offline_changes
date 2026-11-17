@@ -1,0 +1,722 @@
+# Translations template for Offline Changes.
+# Copyright (C) 2026 Quark Cyber Systems
+# This file is distributed under the same license as the Offline Changes project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Offline Changes VERSION\n"
+"Report-Msgid-Bugs-To: vivek@quarkcs.com\n"
+"POT-Creation-Date: 2026-11-17 09:57+0000\n"
+"PO-Revision-Date: 2026-11-17 09:57+0000\n"
+"Last-Translator: vivek@quarkcs.com\n"
+"Language-Team: vivek@quarkcs.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: frappe_offline_changes/api/changes.py:34
+msgid "A batch holds at most {0} changes"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:86
+msgid "A change is received from a device, not entered here"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:104
+msgid "A change received from a device is kept as a record and cannot be deleted"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:250
+msgid "A field was changed on the server after the device read it"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:166
+msgid "A record named {0} already exists"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:169
+#: frappe_offline_changes/offline_changes/processing.py:265
+msgid "A record this one refers to has not been created yet"
+msgstr ""
+
+#. Description of the 'Days Applied Values Are Kept' (Int) field in DocType
+#. 'Offline Change Settings'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "After this, the values of an applied change are removed from the queue. The record's own history keeps them."
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Offline Change'
+#. Option for the 'Outcome' (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Applied"
+msgstr ""
+
+#. Label of the applied_to (Data) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Applied To"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.js:34
+msgid "Apply this change to the record with the values chosen?"
+msgstr ""
+
+#. Option for the 'Outcome' (Select) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Apply to the replacement"
+msgstr ""
+
+#. Label of the batch_id (Data) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Batch"
+msgstr ""
+
+#. Label of the captured_on (Datetime) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Captured On"
+msgstr ""
+
+#. Label of the change_id (Data) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Change ID"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:47
+msgid "Change {0} was sent by another user"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:127
+msgid "Change {0}: {1}"
+msgstr ""
+
+#. Option for the 'Situation' (Select) field in DocType 'Conflict Rule'
+#. Option for the 'Situation' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Changed on device, deleted on server"
+msgstr ""
+
+#. Label of the max_batch_size (Int) field in DocType 'Offline Change Settings'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "Changes per Batch"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.js:26
+msgid "Close"
+msgstr ""
+
+#. Label of the closed (Check) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Closed"
+msgstr ""
+
+#. Label of the conflict (Check) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Conflict"
+msgstr ""
+
+#. Name of a DocType
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Conflict Rule"
+msgstr ""
+
+#. Option for the 'Operation' (Select) field in DocType 'Offline Change'
+#. Label of the allow_create (Check) field in DocType 'Offline Change DocType'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_doctype/offline_change_doctype.json
+msgid "Create"
+msgstr ""
+
+#. Label of the keep_values_days (Int) field in DocType 'Offline Change
+#. Settings'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "Days Applied Values Are Kept"
+msgstr ""
+
+#. Option for the 'Operation' (Select) field in DocType 'Offline Change'
+#. Label of the allow_delete (Check) field in DocType 'Offline Change DocType'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_doctype/offline_change_doctype.json
+msgid "Delete"
+msgstr ""
+
+#. Option for the 'Situation' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Deleted on device, changed on server"
+msgstr ""
+
+#. Option for the 'Outcome' (Select) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Deletion stands"
+msgstr ""
+
+#. Label of the description (Small Text) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Description"
+msgstr ""
+
+#. Label of the device_id (Data) field in DocType 'Offline Change'
+#. Option for the 'Resolution' (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Device"
+msgstr ""
+
+#. Option for the 'Situation' (Select) field in DocType 'Conflict Rule'
+#. Option for the 'Situation' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Different fields changed"
+msgstr ""
+
+#. Label of the reference_doctype (Link) field in DocType 'Offline Change'
+#. Label of the reference_doctype (Link) field in DocType 'Offline Change
+#. DocType'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_doctype/offline_change_doctype.json
+msgid "DocType"
+msgstr ""
+
+#. Label of the doctypes (Table) field in DocType 'Offline Change Settings'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "DocTypes That May Be Changed Offline"
+msgstr ""
+
+#. Label of the enabled (Check) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Enabled"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Failed"
+msgstr ""
+
+#. Label of the label (Data) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Field"
+msgstr ""
+
+#. Label of the fieldname (Data) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Field Name"
+msgstr ""
+
+#. Label of the section_break_fields (Section Break) field in DocType 'Offline
+#. Change'
+#. Label of the field_changes (Table) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Fields"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.js:13
+msgid "For each field in conflict, choose the value the record keeps: the device's, the server's, or another. Then resolve."
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:126
+msgid "Give the reason for rejecting the change"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Offline Change'
+#. Option for the 'Outcome' (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Held"
+msgstr ""
+
+#. Option for the 'Outcome' (Select) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Hold for review"
+msgstr ""
+
+#. Label of the has_lost_values (Check) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Holds a Value That Lost"
+msgstr ""
+
+#. Option for the 'Outcome' (Select) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Last to arrive wins"
+msgstr ""
+
+#. Label of the section_break_limits (Section Break) field in DocType 'Offline
+#. Change Settings'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "Limits"
+msgstr ""
+
+#. Option for the 'Outcome' (Select) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Merge"
+msgstr ""
+
+#. Label of the message (Small Text) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Message"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.py:71
+msgid "Name the scope, or leave the scope type empty"
+msgstr ""
+
+#. Option for the 'Situation' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "New record"
+msgstr ""
+
+#. Option for the 'Situation' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "No access"
+msgstr ""
+
+#. Name of a DocType
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Offline Change"
+msgstr ""
+
+#. Name of a DocType
+#: frappe_offline_changes/offline_changes/doctype/offline_change_doctype/offline_change_doctype.json
+msgid "Offline Change DocType"
+msgstr ""
+
+#. Name of a DocType
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Offline Change Field"
+msgstr ""
+
+#. Name of a role
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Offline Change Reviewer"
+msgstr ""
+
+#. Name of a DocType
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "Offline Change Settings"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:137
+msgid "Only a change that was applied over another value is closed"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.py:81
+msgid "Only a rule for the situation {0} can name a field"
+msgstr ""
+
+#. Label of the reference_doctype (Link) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Only for DocType"
+msgstr ""
+
+#. Label of the fieldname (Data) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Only for Field"
+msgstr ""
+
+#. Label of the scope_name (Dynamic Link) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Only for Scope"
+msgstr ""
+
+#. Label of the operation (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Operation"
+msgstr ""
+
+#. Option for the 'Resolution' (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Other"
+msgstr ""
+
+#. Label of the resolved_value (Long Text) field in DocType 'Offline Change
+#. Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Other Value"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:257
+msgid "Other fields of the record were changed on the server after the device read it"
+msgstr ""
+
+#. Label of the outcome (Select) field in DocType 'Conflict Rule'
+#. Label of the section_break_outcome (Section Break) field in DocType 'Offline
+#. Change'
+#. Label of the outcome (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Outcome"
+msgstr ""
+
+#. Label of the batch_index (Int) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Position in the Batch"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.js:41
+msgid "Reason"
+msgstr ""
+
+#. Label of the enabled (Check) field in DocType 'Offline Change Settings'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "Receive Changes Captured Offline"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Received"
+msgstr ""
+
+#. Label of the received_on (Datetime) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Received On"
+msgstr ""
+
+#. Label of the reference_name (Data) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Record"
+msgstr ""
+
+#. Label of the base_modified (Datetime) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Record Version on the Device"
+msgstr ""
+
+#. Option for the 'Situation' (Select) field in DocType 'Conflict Rule'
+#. Option for the 'Situation' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Record replaced on server"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Offline Change'
+#. Option for the 'Outcome' (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Refused"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.js:10
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.js:44
+msgid "Reject"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.js:43
+msgid "Reject the change"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Rejected"
+msgstr ""
+
+#. Label of the resolution (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Resolution"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.js:9
+msgid "Resolve"
+msgstr ""
+
+#. Option for the 'Status' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Resolved"
+msgstr ""
+
+#. Label of the resolved_by (Link) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Resolved By"
+msgstr ""
+
+#. Label of the resolved_on (Datetime) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Resolved On"
+msgstr ""
+
+#. Label of the row_name (Data) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Row"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:323
+msgid "Row {0} no longer exists. Keep the server's value for its fields."
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.py:36
+msgid "Row {0}: {1} cannot be changed offline. Choose a DocType with records of its own"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.py:41
+msgid "Row {0}: {1} is listed twice"
+msgstr ""
+
+#. Label of the section_break_payload (Section Break) field in DocType 'Offline
+#. Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Rows and New Record"
+msgstr ""
+
+#. Label of the rule (Link) field in DocType 'Offline Change'
+#. Label of the rule (Link) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Rule"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.py:106
+msgid "Rule {0} already decides this situation for the same records"
+msgstr ""
+
+#. Option for the 'Outcome' (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Same"
+msgstr ""
+
+#. Option for the 'Situation' (Select) field in DocType 'Conflict Rule'
+#. Option for the 'Situation' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.py:81
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Same field changed"
+msgstr ""
+
+#. Label of the scope_name (Dynamic Link) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Scope"
+msgstr ""
+
+#. Label of the scope_doctype (Link) field in DocType 'Conflict Rule'
+#. Label of the scope_doctype (Link) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Scope Type"
+msgstr ""
+
+#. Option for the 'Resolution' (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Server"
+msgstr ""
+
+#. Label of the server_changed_by (Link) field in DocType 'Offline Change
+#. Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Server Value Changed By"
+msgstr ""
+
+#. Label of the server_changed_on (Datetime) field in DocType 'Offline Change
+#. Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Server Value Changed On"
+msgstr ""
+
+#. Option for the 'Outcome' (Select) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Server kept"
+msgstr ""
+
+#. Option for the 'Outcome' (Select) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "Server value stays"
+msgstr ""
+
+#. Label of the situation (Select) field in DocType 'Conflict Rule'
+#. Label of the situation (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Situation"
+msgstr ""
+
+#. Label of the status (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Status"
+msgstr ""
+
+#. Name of a role
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
+msgid "System Manager"
+msgstr ""
+
+#. Label of the table_field (Data) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Table"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:418
+msgid "The change does not say which version of the record the device read"
+msgstr ""
+
+#. Description of the 'Only for Field' (Data) field in DocType 'Conflict Rule'
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
+msgid "The field's name, in the record or in one of its tables"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:96
+msgid "The fields of a change cannot be added or removed"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:115
+msgid "The record changed again on the server. Choose a value for each field in conflict, then resolve."
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:218
+msgid "The record no longer exists. Reject the change."
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:151
+msgid "The record this change is for has not been created yet"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:191
+msgid "The record was already deleted"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:196
+msgid "The record was changed on the server after the device read it"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:228
+msgid "The record was deleted on the server"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:226
+msgid "The record was deleted on the server, and the rule lets the deletion stand"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:212
+msgid "The record was replaced by {0} on the server"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:111
+msgid "The values of this change were removed and it can no longer be applied"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:150
+msgid "This change is {0} and does not wait for a reviewer"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.js:21
+msgid "This change was applied over another value, kept below. Close it once you have seen it."
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:31
+msgid "This site does not receive changes captured offline"
+msgstr ""
+
+#. Option for the 'Situation' (Select) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Unchanged"
+msgstr ""
+
+#. Option for the 'Operation' (Select) field in DocType 'Offline Change'
+#. Label of the allow_update (Check) field in DocType 'Offline Change DocType'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+#: frappe_offline_changes/offline_changes/doctype/offline_change_doctype/offline_change_doctype.json
+msgid "Update"
+msgstr ""
+
+#. Label of the user (Link) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "User"
+msgstr ""
+
+#. Label of the device_value (Long Text) field in DocType 'Offline Change
+#. Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Value from the Device"
+msgstr ""
+
+#. Label of the server_value (Long Text) field in DocType 'Offline Change
+#. Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Value on the Server"
+msgstr ""
+
+#. Label of the base_value (Long Text) field in DocType 'Offline Change Field'
+#: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
+msgid "Value the Device Started From"
+msgstr ""
+
+#. Label of the values_removed (Check) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Values Removed"
+msgstr ""
+
+#. Label of the payload (JSON) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Values Sent"
+msgstr ""
+
+#. Label of the depends_on (Link) field in DocType 'Offline Change'
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
+msgid "Waits For"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:291
+msgid "You may not change the field {0}"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:232
+msgid "You may not change this record"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:91
+msgid "You may not make this change"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:148
+msgid "it changes nothing"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:137
+msgid "it does not name the record"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:130
+msgid "it has no change id"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:146
+msgid "it has no values for the record to create"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:134
+msgid "it names no DocType of this site"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:132
+msgid "its operation is not Create, Update or Delete"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:144
+msgid "its {0} are not given by name"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:141
+msgid "the version of the record the device read is not a date and time"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:289
+msgid "{0} has no field {1} that can be changed"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.py:85
+msgid "{0} has no field {1}, in the record or in its tables"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/processing.py:407
+msgid "{0} has no table {1}"
+msgstr ""
+
+#: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.py:64
+msgid "{0} is not an outcome of the situation {1}. Choose one of: {2}"
+msgstr ""
+
+#: frappe_offline_changes/api/changes.py:74
+msgid "{0} may not be sent from a device: {1}"
+msgstr ""
+

@@ -1,0 +1,298 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "hash",
+ "creation": "2026-11-17 10:43:29.084506",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "operation",
+  "reference_doctype",
+  "reference_name",
+  "applied_to",
+  "base_modified",
+  "column_break_origin",
+  "user",
+  "device_id",
+  "change_id",
+  "batch_id",
+  "batch_index",
+  "captured_on",
+  "received_on",
+  "section_break_outcome",
+  "situation",
+  "rule",
+  "message",
+  "depends_on",
+  "column_break_review",
+  "scope_doctype",
+  "scope_name",
+  "has_lost_values",
+  "closed",
+  "resolved_by",
+  "resolved_on",
+  "values_removed",
+  "section_break_fields",
+  "field_changes",
+  "section_break_payload",
+  "payload"
+ ],
+ "fields": [
+  {
+   "default": "Received",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Received\nApplied\nHeld\nRefused\nFailed\nResolved\nRejected",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "operation",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Operation",
+   "options": "Create\nUpdate\nDelete",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "DocType",
+   "options": "DocType",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Record",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "applied_to",
+   "fieldtype": "Data",
+   "label": "Applied To",
+   "read_only": 1
+  },
+  {
+   "fieldname": "base_modified",
+   "fieldtype": "Datetime",
+   "label": "Record Version on the Device",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_origin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "device_id",
+   "fieldtype": "Data",
+   "label": "Device",
+   "read_only": 1
+  },
+  {
+   "fieldname": "change_id",
+   "fieldtype": "Data",
+   "label": "Change ID",
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "batch_id",
+   "fieldtype": "Data",
+   "label": "Batch",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "batch_index",
+   "fieldtype": "Int",
+   "label": "Position in the Batch",
+   "read_only": 1
+  },
+  {
+   "fieldname": "captured_on",
+   "fieldtype": "Datetime",
+   "label": "Captured On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "received_on",
+   "fieldtype": "Datetime",
+   "label": "Received On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_outcome",
+   "fieldtype": "Section Break",
+   "label": "Outcome"
+  },
+  {
+   "fieldname": "situation",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Situation",
+   "options": "\nUnchanged\nDifferent fields changed\nSame field changed\nChanged on device, deleted on server\nRecord replaced on server\nDeleted on device, changed on server\nNew record\nNo access",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rule",
+   "fieldtype": "Link",
+   "label": "Rule",
+   "options": "Conflict Rule",
+   "read_only": 1
+  },
+  {
+   "fieldname": "message",
+   "fieldtype": "Small Text",
+   "label": "Message",
+   "read_only": 1
+  },
+  {
+   "fieldname": "depends_on",
+   "fieldtype": "Link",
+   "label": "Waits For",
+   "options": "Offline Change",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_review",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "scope_doctype",
+   "fieldtype": "Link",
+   "label": "Scope Type",
+   "options": "DocType",
+   "read_only": 1
+  },
+  {
+   "fieldname": "scope_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Scope",
+   "options": "scope_doctype",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "has_lost_values",
+   "fieldtype": "Check",
+   "label": "Holds a Value That Lost",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "closed",
+   "fieldtype": "Check",
+   "label": "Closed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "resolved_by",
+   "fieldtype": "Link",
+   "label": "Resolved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "resolved_on",
+   "fieldtype": "Datetime",
+   "label": "Resolved On",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "values_removed",
+   "fieldtype": "Check",
+   "label": "Values Removed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_fields",
+   "fieldtype": "Section Break",
+   "label": "Fields"
+  },
+  {
+   "fieldname": "field_changes",
+   "fieldtype": "Table",
+   "label": "Fields",
+   "options": "Offline Change Field"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_payload",
+   "fieldtype": "Section Break",
+   "label": "Rows and New Record"
+  },
+  {
+   "fieldname": "payload",
+   "fieldtype": "JSON",
+   "label": "Values Sent",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-17 10:43:29.084506",
+ "modified_by": "Administrator",
+ "module": "Offline Changes",
+ "name": "Offline Change",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Offline Change Reviewer",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "reference_name"
+}
