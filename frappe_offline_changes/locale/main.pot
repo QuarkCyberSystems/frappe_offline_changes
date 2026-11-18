@@ -7,14 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Offline Changes VERSION\n"
 "Report-Msgid-Bugs-To: vivek@quarkcs.com\n"
-"POT-Creation-Date: 2026-11-17 10:42+0000\n"
-"PO-Revision-Date: 2026-11-17 10:42+0000\n"
+"POT-Creation-Date: 2026-11-17 11:17+0000\n"
+"PO-Revision-Date: 2026-11-17 11:17+0000\n"
 "Last-Translator: vivek@quarkcs.com\n"
 "Language-Team: vivek@quarkcs.com\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
+
+#. Header text in the Offline Changes Workspace
+#: frappe_offline_changes/offline_changes/workspace/offline_changes/offline_changes.json
+msgid "<span class=\"h4\">Changes captured offline</span>"
+msgstr ""
 
 #: frappe_offline_changes/api/changes.py:36
 msgid "A batch holds at most {0} changes"
@@ -45,6 +50,11 @@ msgstr ""
 #. 'Offline Change Settings'
 #: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
 msgid "After this, the values of an applied change are removed from the queue. The record's own history keeps them."
+msgstr ""
+
+#. Label of a shortcut in the Offline Changes Workspace
+#: frappe_offline_changes/offline_changes/workspace/offline_changes/offline_changes.json
+msgid "All Changes"
 msgstr ""
 
 #. Option for the 'Status' (Select) field in DocType 'Offline Change'
@@ -98,6 +108,16 @@ msgstr ""
 msgid "Changed on device, deleted on server"
 msgstr ""
 
+#. Label of a Sidebar Item
+#: frappe_offline_changes/offline_changes/sidebar/offline_changes/offline_changes.json
+msgid "Changes"
+msgstr ""
+
+#. Label of a shortcut in the Offline Changes Workspace
+#: frappe_offline_changes/offline_changes/workspace/offline_changes/offline_changes.json
+msgid "Changes Waiting for Review"
+msgstr ""
+
 #. Label of the max_batch_size (Int) field in DocType 'Offline Change Settings'
 #: frappe_offline_changes/offline_changes/doctype/offline_change_settings/offline_change_settings.json
 msgid "Changes per Batch"
@@ -120,6 +140,13 @@ msgstr ""
 #. Name of a DocType
 #: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
 msgid "Conflict Rule"
+msgstr ""
+
+#. Label of a Sidebar Item
+#. Label of a shortcut in the Offline Changes Workspace
+#: frappe_offline_changes/offline_changes/sidebar/offline_changes/offline_changes.json
+#: frappe_offline_changes/offline_changes/workspace/offline_changes/offline_changes.json
+msgid "Conflict Rules"
 msgstr ""
 
 #. Option for the 'Operation' (Select) field in DocType 'Offline Change'
@@ -236,6 +263,11 @@ msgstr ""
 msgid "Holds a Value That Lost"
 msgstr ""
 
+#. Label of a Sidebar Item
+#: frappe_offline_changes/offline_changes/sidebar/offline_changes/offline_changes.json
+msgid "Home"
+msgstr ""
+
 #. Option for the 'Outcome' (Select) field in DocType 'Conflict Rule'
 #: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
 msgid "Last to arrive wins"
@@ -292,6 +324,11 @@ msgstr ""
 msgid "Offline Change Field"
 msgstr ""
 
+#. Label of a Desktop Icon
+#: frappe_offline_changes/desktop_icon/offline_change_queue.json
+msgid "Offline Change Queue"
+msgstr ""
+
 #. Name of a role
 #: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
 #: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.json
@@ -303,12 +340,21 @@ msgstr ""
 msgid "Offline Change Settings"
 msgstr ""
 
+#. Label of a Desktop Icon
+#. Title of a Sidebar
+#. Name of a Workspace
+#: frappe_offline_changes/desktop_icon/offline_changes.json
+#: frappe_offline_changes/offline_changes/sidebar/offline_changes/offline_changes.json
+#: frappe_offline_changes/offline_changes/workspace/offline_changes/offline_changes.json
+msgid "Offline Changes"
+msgstr ""
+
 #. Name of a DocType
 #: frappe_offline_changes/offline_changes/doctype/offline_review_scope/offline_review_scope.json
 msgid "Offline Review Scope"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:137
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:136
 msgid "Only a change that was applied over another value is closed"
 msgstr ""
 
@@ -453,6 +499,13 @@ msgstr ""
 msgid "Resolved On"
 msgstr ""
 
+#. Label of a Sidebar Item
+#. Label of a shortcut in the Offline Changes Workspace
+#: frappe_offline_changes/offline_changes/sidebar/offline_changes/offline_changes.json
+#: frappe_offline_changes/offline_changes/workspace/offline_changes/offline_changes.json
+msgid "Review Scopes"
+msgstr ""
+
 #. Label of the user (Link) field in DocType 'Offline Review Scope'
 #: frappe_offline_changes/offline_changes/doctype/offline_review_scope/offline_review_scope.json
 msgid "Reviewer"
@@ -564,6 +617,13 @@ msgstr ""
 msgid "Server value stays"
 msgstr ""
 
+#. Label of a Sidebar Item
+#. Label of a shortcut in the Offline Changes Workspace
+#: frappe_offline_changes/offline_changes/sidebar/offline_changes/offline_changes.json
+#: frappe_offline_changes/offline_changes/workspace/offline_changes/offline_changes.json
+msgid "Settings"
+msgstr ""
+
 #. Label of the situation (Select) field in DocType 'Conflict Rule'
 #. Label of the situation (Select) field in DocType 'Offline Change'
 #: frappe_offline_changes/offline_changes/doctype/conflict_rule/conflict_rule.json
@@ -587,6 +647,10 @@ msgstr ""
 #. Label of the table_field (Data) field in DocType 'Offline Change Field'
 #: frappe_offline_changes/offline_changes/doctype/offline_change_field/offline_change_field.json
 msgid "Table"
+msgstr ""
+
+#: frappe_offline_changes/tests/e2e.py:126
+msgid "The browser test creates a user and records: it runs on a development site only"
 msgstr ""
 
 #: frappe_offline_changes/offline_changes/processing.py:423
@@ -646,11 +710,15 @@ msgstr ""
 msgid "The record was replaced by {0} on the server"
 msgstr ""
 
+#: frappe_offline_changes/tests/e2e.py:99
+msgid "The site does not hold what the reviewer chose: {0}"
+msgstr ""
+
 #: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:111
 msgid "The values of this change were removed and it can no longer be applied"
 msgstr ""
 
-#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:150
+#: frappe_offline_changes/offline_changes/doctype/offline_change/offline_change.py:154
 msgid "This change is {0} and does not wait for a reviewer"
 msgstr ""
 
@@ -777,5 +845,10 @@ msgstr ""
 
 #: frappe_offline_changes/api/changes.py:81
 msgid "{0} may not be sent from a device: {1}"
+msgstr ""
+
+#. Count format of shortcut in the Offline Changes Workspace
+#: frappe_offline_changes/offline_changes/workspace/offline_changes/offline_changes.json
+msgid "{} waiting"
 msgstr ""
 
