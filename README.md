@@ -120,7 +120,16 @@ pre-commit install
 bench --site $SITE run-tests --app frappe_offline_changes
 ```
 
-The tests change Frappe's own ToDo and Contact records, so they need no other app. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Four kinds of test, from the code outwards:
+
+| What | Where | Needs |
+|---|---|---|
+| Every situation, rule and reviewer action, called directly and rolled back | `tests/test_changes.py` | Frappe alone: the records are its own ToDo, Contact and Language |
+| The same app on Unified Case Management persons: delegations, a right withdrawn, a person merged | `tests/test_ucm.py` | The `ucm` app; skipped without it |
+| Devices over HTTP, through the web server and the background worker | `tests/test_http.py` | The site served and a worker running; skipped otherwise |
+| A reviewer at the review screen, in a browser | `e2e/run.sh <site>` | A development site being served, and a Python with Playwright (`E2E_PYTHON`) |
+
+The last two commit what they create, since other processes must see it, and remove it afterwards. `tests/device.py` is the device they use: it speaks HTTP only, and is the shortest example of what an offline app sends. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Translations
 
