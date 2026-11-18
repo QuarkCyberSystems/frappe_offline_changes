@@ -123,8 +123,7 @@ class OfflineChange(Document):
 			frappe.throw(_("Give the reason for rejecting the change"))
 		self.status, self.message = "Rejected", reason.strip()
 		self.resolved_by, self.resolved_on = frappe.session.user, now_datetime()
-		self.flags.from_module = True
-		self.save()
+		self.save_as_module()
 
 	@frappe.whitelist()
 	def close(self):
@@ -133,7 +132,12 @@ class OfflineChange(Document):
 		if not self.has_lost_values or self.status in processing.OPEN:
 			frappe.throw(_("Only a change that was applied over another value is closed"))
 		self.closed = 1
+		self.save_as_module()
+
+	def save_as_module(self):
 		self.flags.from_module = True
+		# The rule that decided, or the user who sent, may be gone by now: the row still records them
+		self.flags.ignore_links = True
 		self.save()
 
 	def check_reviewer(self):

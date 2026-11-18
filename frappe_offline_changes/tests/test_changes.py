@@ -185,6 +185,13 @@ class TestOfflineChanges(IntegrationTestCase):
 		change.reload()
 		self.assertEqual((change.status, change.resolved_by), ("Resolved", "Administrator"))
 
+	def test_a_change_outlives_the_rule_that_held_it(self):
+		_todo, change = self.test_a_field_held_for_review_holds_the_whole_change()
+		frappe.delete_doc("Conflict Rule", change.rule, force=True)
+		change.field_changes[0].resolution = "Server"
+		self.assertTrue(change.resolve())
+		self.assertEqual(frappe.db.get_value("Offline Change", change.name, "status"), "Resolved")
+
 	def test_a_reviewer_keeps_the_server_value_or_enters_another(self):
 		todo, change = self.test_a_field_held_for_review_holds_the_whole_change()
 		change.field_changes[0].resolution = "Server"

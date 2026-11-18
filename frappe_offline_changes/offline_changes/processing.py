@@ -455,5 +455,7 @@ def _stop(change, status, message=None):
 
 def _save(change):
 	change.flags.from_module = True
+	# The rule that decided, or the user who sent, may be gone by the time a reviewer acts: the row still records them
+	change.flags.ignore_links = True
 	# The queue is written by this module for the user whose change it is: users hold no right on the queue itself
 	change.save(ignore_permissions=True)
